@@ -14,7 +14,7 @@ flowchart TD
   cyl@{ shape: cyl }
 
   B db1@--> cyl
-  db1@{ animation: slow }
+  db1@{ animation: fast }
   linkStyle 4 stroke:#FF0011,fill:none
 
   cyl db2@--> B
