@@ -18,7 +18,7 @@ flowchart TD
   linkStyle 4 stroke:#FF0011,fill:none
 
   cyl db2@--> B
-  db2@{ animation: slow }
+  db2@{ animation: fast }
   linkStyle 5 stroke:#00AA11,fill:none
 
 
