@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     subgraph "Users & External Systems"
         U[Users/External Systems]
@@ -125,3 +126,4 @@ graph TD
     style Looker fill:#ffe4b5,stroke:#333,stroke-width:2px,rx:8px,ry:8px
     style Agentspace fill:#ffb6c1,stroke:#333,stroke-width:2px,rx:8px,ry:8px
     style U fill:#d3d3d3,stroke:#333,stroke-width:2px,rx:8px,ry:8px
+```
