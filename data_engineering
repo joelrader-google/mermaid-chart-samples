@@ -1,0 +1,127 @@
+graph TD
+    subgraph "Users & External Systems"
+        U[Users/External Systems]
+    end
+
+    subgraph "Google Cloud Platform"
+        direction LR
+
+        subgraph "Data Ingestion & Storage"
+            PubSub[**Pub/Sub**<br><i>Streaming Ingestion</i>]
+            CloudStorage[**Cloud Storage**<br><i>Object Storage/Data Lake</i>]
+            BigQuery[**BigQuery**<br><i>Data Warehouse,<br>GIS, ML</i>]
+
+            U -- Ingests Data [2] --> PubSub
+            PubSub -- Streams Data [2] --> CloudStorage
+            PubSub -- Streams Data [2] --> BigQuery
+            CloudStorage -- Stores raw/processed data [3] --> BigQuery
+        end
+
+        subgraph "Data Processing & Orchestration"
+            Dataflow[**Cloud Dataflow**<br><i>Batch & Stream Processing</i>]
+            Composer[**Cloud Composer**<br><i>Workflow Orchestration</i>]
+            Workflows[**Cloud Workflows**<br><i>Task Orchestration</i>]
+            CloudFunctions[**Cloud Functions**<br><i>Serverless Compute</i>]
+            CloudRun[**Cloud Run**<br><i>Serverless Containers</i>]
+            DocumentAI[**Document AI**<br><i>Data Extraction from Docs</i>]
+            AppSheet[**AppSheet**<br><i>Low-code App Dev</i>]
+
+            BigQuery -- Data for Processing [4] --> Dataflow
+            CloudStorage -- Data for Processing [5] --> Dataflow
+            DocumentAI -- Extracts structured data [6] --> Dataflow
+            Dataflow -- Processed Data [4] --> BigQuery
+            Composer -- Orchestrates Pipelines [4] --> Dataflow
+            Composer -- Orchestrates Tasks [4] --> Workflows
+            Workflows -- Triggers Logic [6] --> CloudFunctions
+            Workflows -- Triggers Logic [6] --> CloudRun
+            AppSheet -- Builds apps, automates processes [6] --> CloudFunctions
+            AppSheet -- Builds apps, automates processes [6] --> CloudRun
+        end
+
+        subgraph "AI & Machine Learning Core Platform"
+            VertexAI[**Vertex AI**<br><i>Unified ML Platform</i>]
+            AutoML[**AutoML**<br><i>Automated ML</i>]
+            GenAI[**Generative AI**<br><i>Text/Image Generation</i>]
+            Workbench[**Vertex AI Workbench**<br><i>Dev Environment</i>]
+            Pipelines[**Vertex AI Pipelines**<br><i>MLOps Workflows</i>]
+            ModelMonitoring[**Vertex AI Model Monitoring**<br><i>Deployed Model Oversight</i>]
+            ResponsibleAI[**Vertex AI Responsible AI Toolkit**<br><i>Bias Detection, Explainability</i>]
+
+            BigQuery -- Training/Inference Data [7] --> VertexAI
+            VertexAI -- Simplifies ML with [8] --> AutoML
+            VertexAI -- Supports [9] --> GenAI
+            VertexAI -- Provides Dev Env [10] --> Workbench
+            VertexAI -- Orchestrates MLOps with [11] --> Pipelines
+            VertexAI -- Monitors Models with [11] --> ModelMonitoring
+            VertexAI -- Integrates [11] --> ResponsibleAI
+            Pipelines -- Deploys Models [11] --> ModelMonitoring
+        end
+
+        subgraph "Pre-trained AI Services"
+            NaturalLanguageAPI[**Cloud Natural Language API**<br><i>Text Analysis</i>]
+            VisionAPI[**Cloud Vision AI API**<br><i>Image Analysis</i>]
+            VideoAIAPI[**Cloud Video AI API**<br><i>Video Analysis</i>]
+
+            U -- Provides Text [9] --> NaturalLanguageAPI
+            U -- Provides Images [12] --> VisionAPI
+            U -- Provides Video [12] --> VideoAIAPI
+        end
+
+        subgraph Conversational AI & Agents
+            Agentspace[**Agentspace**<br><i>AI-Powered Agent Platform</i>]
+            Dialogflow[**Dialogflow**<br><i>Conversational Interface</i>]
+
+            U -- Interacts with [13] --> Agentspace
+            Agentspace -- Built on [1] --> Dialogflow
+            Agentspace -- Leverages ML from [7] --> VertexAI
+            Dialogflow -- Uses NLP from [14] --> NaturalLanguageAPI
+            Agentspace -- Accesses data from [7] --> BigQuery
+        end
+
+        subgraph "Business Intel & Visualization"
+            Looker[**Looker**<br><i>BI & Data Platform</i>]
+            LookerStudio[**Looker Studio**<br><i>Free Reporting & Dashboards</i>]
+            GoogleMaps[**Google Maps Platform**<br><i>Mapping APIs</i>]
+
+            BigQuery -- Data Source [15] --> Looker
+            BigQuery -- Data Source [15] --> LookerStudio
+            Looker -- Integrates Maps [16] --> GoogleMaps
+            LookerStudio -- Embeds Maps [16] --> GoogleMaps
+            Looker -- Provides Insights to [14] --> U
+            LookerStudio -- Provides Insights to [15] --> U
+        end
+
+        subgraph "Governance, Security, & Operations"
+            IAM[**Cloud IAM**<br><i>Identity & Access Management</i>]
+            VPCServiceControls[**VPC Service Controls**<br><i>Network Security Perimeter</i>]
+            KMS[**Cloud Key Management Service KMS**<br><i>Encryption Key Management</i>]
+            DLP[**Data Loss Prevention DLP**<br><i>Sensitive Data Protection</i>]
+            DataCatalog[**Data Catalog**<br><i>Metadata & Lineage Management</i>]
+            SecurityCommandCenter[**Security Command Center**<br><i>Centralized Security</i>]
+            AuditLogs[**Cloud Audit Logs**<br><i>Audit Trails</i>]
+            CloudMonitoring[**Cloud Monitoring**<br><i>Performance & Uptime</i>]
+
+            IAM -- Controls Access [17] --- GoogleCloudPlatform
+            VPCServiceControls -- Creates Security Perimeter [17] --- GoogleCloudPlatform
+            KMS -- Manages Encryption [17] --- GoogleCloudPlatform
+            DLP -- Protects Sensitive Data [17] --- GoogleCloudPlatform
+            DataCatalog -- Manages Data Governance [18] --- GoogleCloudPlatform
+            SecurityCommandCenter -- Centralized Security Monitoring [3] --- GoogleCloudPlatform
+            AuditLogs -- Records Actions [3] --- GoogleCloudPlatform
+            CloudMonitoring -- Monitors Performance [19] --- GoogleCloudPlatform
+        end
+
+        subgraph "Support & Collaboration"
+            ProfessionalServices[**Google Cloud Professional Services**<br><i>Expert Consulting</i>]
+            Workspace[**Google Workspace**<br><i>Collaboration Tools</i>]
+
+            ProfessionalServices -- Provides Expertise [20] --> U
+            Workspace -- Facilitates Collaboration [21] --> U
+        end
+    end
+
+    style BigQuery fill:#add8e6,stroke:#333,stroke-width:2px,rx:8px,ry:8px
+    style VertexAI fill:#90ee90,stroke:#333,stroke-width:2px,rx:8px,ry:8px
+    style Looker fill:#ffe4b5,stroke:#333,stroke-width:2px,rx:8px,ry:8px
+    style Agentspace fill:#ffb6c1,stroke:#333,stroke-width:2px,rx:8px,ry:8px
+    style U fill:#d3d3d3,stroke:#333,stroke-width:2px,rx:8px,ry:8px
