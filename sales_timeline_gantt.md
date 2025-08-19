@@ -1,3 +1,4 @@
+```mermaid
 ---
 config:
   theme: default
@@ -39,3 +40,4 @@ gantt
     Implementation & Solution Delivery : task7, after task6, 120d
     Ongoing Optimization & Support : task8, after task7, 90d
     PSO End? : vert, v6, after task7, 1d
+```
