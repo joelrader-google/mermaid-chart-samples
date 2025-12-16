@@ -7,12 +7,12 @@ graph TD
     end
 
     subgraph Google Cloud
-        C -- Analysis Results (Face Embedding) --> D[Cloud Pub/Sub];
+        C -- Analysis Results - Face Embedding --> D[Cloud Pub/Sub];
         D -- Triggers --> F[Cloud Function];
-        F -- Reads --> G[Firestore/Cloud SQL (Authorized User Database)];
+        F -- Reads --> G[Firestore/Cloud SQL Authorized User Database];
         F -- API Call --> E;
         C -- Stores Video Clips --> H[Cloud Storage];
-    end
+    end- 
 
     style A fill:#d3d3d3,stroke:#333,stroke-width:2px
     style E fill:#d3d3d3,stroke:#333,stroke-width:2px
