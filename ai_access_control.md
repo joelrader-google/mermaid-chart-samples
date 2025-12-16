@@ -12,7 +12,7 @@ graph TD
         F -- Reads --> G[Firestore/Cloud SQL Authorized User Database];
         F -- API Call --> E;
         C -- Stores Video Clips --> H[Cloud Storage];
-    end- 
+    end
 
     style A fill:#d3d3d3,stroke:#333,stroke-width:2px
     style E fill:#d3d3d3,stroke:#333,stroke-width:2px
