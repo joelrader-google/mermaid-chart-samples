@@ -44,8 +44,8 @@ flowchart LR
             SharedSvcs --- IAM
         end
 
-        %% 2. TENANT / SATELLITE COURT (Replicated 200+ times)
-        subgraph Satellite [Satellite Court Landing Zone Example Tenant]
+        %% 2. TENANT / SATELLITE SUB AGENCY (Replicated 200+ times)
+        subgraph Satellite [Satellite Sub-Agency Landing Zone Example Tenant]
             direction TB
             
             subgraph AppLayer [Application Layer]
