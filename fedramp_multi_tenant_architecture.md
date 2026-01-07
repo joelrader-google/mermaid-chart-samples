@@ -45,7 +45,7 @@ flowchart LR
         end
 
         %% 2. TENANT / SATELLITE SUB AGENCY (Replicated 200+ times)
-        subgraph Satellite [Satellite Sub-Agency Landing Zone Example Tenant]
+        subgraph Satellite [Satellite Sub-Agency <br>Landing Zone <br>Example Tenant]
             direction TB
             
             subgraph AppLayer [Application Layer]
