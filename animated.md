@@ -8,7 +8,7 @@ flowchart TD
     A L_A_C_0@--o C["Option A"]
     B --> C & D["Option B"]
     linkStyle 0 stroke:#C8E6C9,fill:none
-    L_A_B_0@{ animation: fast } 
+    L_A_B_0@{ animation: slow } 
     L_A_C_0@{ animation: slow }
 
   cyl@{ shape: cyl }
